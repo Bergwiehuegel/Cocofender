@@ -33,9 +33,9 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
         }
-        Debug.Log("Wave Incoming!");
+        //Debug.Log("Wave " + waveIndex + " Incoming!");
     }
     void SpawnEnemy()
     {
