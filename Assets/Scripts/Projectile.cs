@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag == "Environment")
         {
-            Debug.Log("Boden getroffen!");
+            //Debug.Log("Boden getroffen!");
             GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effectIns, 0.2f);
             Destroy(gameObject);
@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
 
     protected void HitTarget()
     {
-        Debug.Log("Hit target "+target);
+        //Debug.Log("Hit target "+target);
         GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 0.2f);
         Destroy(target.gameObject);

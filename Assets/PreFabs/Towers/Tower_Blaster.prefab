@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 9041651639922351075}
   - component: {fileID: -385098479880616001}
   m_Layer: 0
-  m_Name: weapon_blaster
+  m_Name: Tower_Blaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
