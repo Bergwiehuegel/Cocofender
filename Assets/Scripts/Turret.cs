@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
 
-    private Transform target;
+    protected Transform target;
 
     [Header("Attributes")]
     public float range = 15f;
     public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    protected float fireCountdown = 0f;
     public float turnSpeed = 10f;
 
     [Header("Unity Setup Fields")]
@@ -26,7 +24,7 @@ public class Turret : MonoBehaviour
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
-    void UpdateTarget()
+    protected void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
@@ -74,10 +72,10 @@ public class Turret : MonoBehaviour
         fireCountdown -= Time.deltaTime;
     }
 
-    void Shoot()
+    public virtual void Shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        Projectile bullet = bulletGO.GetComponent<Projectile>();
 
         if (bullet != null)
         {
