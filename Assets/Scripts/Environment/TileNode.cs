@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TileNode : MonoBehaviour
 {
@@ -10,17 +11,20 @@ public class TileNode : MonoBehaviour
     private Renderer rend;
     private Color startColor;
 
-    // Start is called before the first frame update
+    BuildManager buildManager;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
         startColor = rend.materials[1].color;
-        //Debug.Log(startMaterial);
+        buildManager = BuildManager.instance;
     }
 
     void OnMouseDown()
     {
+        if (buildManager.GetTurretToBuild() == null)
+            return;
+
         if(turret != null)
         {
             Debug.Log("Cannot Build here!!!");
@@ -29,21 +33,24 @@ public class TileNode : MonoBehaviour
 
         GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
         turret = (GameObject)Instantiate(turretToBuild, transform.position + spawnPosition, transform.rotation);
+
+        buildManager.RemoveTurretToBuild();
     }
 
 
-    // Update is called once per frame
     void OnMouseEnter()
     {
-        //Debug.Log("MouseEntered?");
+        //if (EventSystem.current.IsPointerOverGameObject())
+        //    return;
+
+        if (buildManager.GetTurretToBuild() == null)
+            return;
+
         rend.materials[1].color = hoverColor;
-        //rend.material.color = hoverColor;
     }
 
     void OnMouseExit()
     {
-        //Debug.Log("Mouse Exited?");
         rend.materials[1].color = startColor;
-        //rend.material.color = startColor;
     }
 }
