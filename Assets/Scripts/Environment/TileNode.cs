@@ -18,6 +18,8 @@ public class TileNode : MonoBehaviour
         rend = GetComponent<Renderer>();
         startColor = rend.materials[1].color;
         buildManager = BuildManager.instance;
+        //Vector3 randomY = new Vector3(0,Random.Range(0f, 0.5f),0);
+        //transform.position += randomY;
     }
 
     void OnMouseDown()
