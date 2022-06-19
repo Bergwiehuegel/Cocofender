@@ -79,9 +79,16 @@ public class Enemy : MonoBehaviour
 
     void EndPath()
     {
+        for (int i = 0; i < spawnShipsOnDeath; i++)
+        {
+            PlayerStats.Lives--;
+            //WaveSpawner.EnemiesAlive--
+        }
+
         PlayerStats.Lives--;
         //WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
+
     }
 
     public void TakeDamage(float amount)
@@ -121,6 +128,7 @@ public class Enemy : MonoBehaviour
 
         PlayerStats.Money += worth;
 
+        //WaveSpawner.EnemiesAlive--;
         //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(effect, 5f);
 

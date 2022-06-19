@@ -223,6 +223,7 @@ MonoBehaviour:
   enemyCanvas: {fileID: 4956165346515924848}
   healthBar: {fileID: 8456627428574591072}
   ufoPrefab: {fileID: 0}
+  audioHandlerObject: {fileID: 5967243136427245803, guid: e357493fe99da77449f0e1262ad187a8, type: 3}
 --- !u!1 &7399272985025616323
 GameObject:
   m_ObjectHideFlags: 0
