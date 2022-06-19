@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool GameOver = false;
+    public static bool GameIsOver = false;
+
+    public GameObject gameOverUI;
     // Update is called once per frame
+
+    private void Start()
+    {
+        GameIsOver = false;
+    }
+
     void Update()
     {
-        if (GameOver)
+        if (GameIsOver)
             return;
+
+        if(Input.GetKeyDown("e"))
+        {
+            EndGame();
+        }
 
         if(PlayerStats.Lives <= 0)
         {
@@ -20,6 +33,7 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         Debug.Log("GameOver!");
-        GameOver = true;
+        GameIsOver = true;
+        gameOverUI.SetActive(true);
     }
 }
