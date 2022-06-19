@@ -3,10 +3,12 @@ using UnityEngine.EventSystems;
 
 public class TileNode : MonoBehaviour
 {
-    public Color hoverColor;
+    public Color cannotBuildColor;
+    public Color canBuildColor;
     public Vector3 spawnPosition;
 
-    private GameObject turret;
+    [Header ("Optional")]
+    public GameObject turret;
 
     private Renderer rend;
     private Color startColor;
@@ -18,13 +20,16 @@ public class TileNode : MonoBehaviour
         rend = GetComponent<Renderer>();
         startColor = rend.materials[1].color;
         buildManager = BuildManager.instance;
-        //Vector3 randomY = new Vector3(0,Random.Range(0f, 0.5f),0);
-        //transform.position += randomY;
+    }
+
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + spawnPosition;
     }
 
     void OnMouseDown()
     {
-        if (buildManager.GetTurretToBuild() == null)
+        if (!buildManager.CanBuild)
             return;
 
         if(turret != null)
@@ -33,22 +38,22 @@ public class TileNode : MonoBehaviour
             return;
         }
 
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, transform.position + spawnPosition, transform.rotation);
-
-        buildManager.RemoveTurretToBuild();
+        buildManager.BuildTurretOn(this);
+        buildManager.UnselectTurretToBuild();
     }
-
 
     void OnMouseEnter()
     {
-        //if (EventSystem.current.IsPointerOverGameObject())
-        //    return;
-
-        if (buildManager.GetTurretToBuild() == null)
+        if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        rend.materials[1].color = hoverColor;
+        if (!buildManager.CanBuild)
+            return;
+
+        if (buildManager.CanAfford)
+            rend.materials[1].color = canBuildColor;
+        else
+            rend.materials[1].color = cannotBuildColor;
     }
 
     void OnMouseExit()

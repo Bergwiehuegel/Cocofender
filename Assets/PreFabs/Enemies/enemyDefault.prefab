@@ -217,9 +217,12 @@ MonoBehaviour:
   rotationSpeed: 180
   amplitude: 0.7
   offset: 2.5
-  worth: 50
+  worth: 20
+  spawnShipsOnDeath: 0
+  hasArmor: 0
   enemyCanvas: {fileID: 4956165346515924848}
   healthBar: {fileID: 8456627428574591072}
+  ufoPrefab: {fileID: 0}
 --- !u!1 &7399272985025616323
 GameObject:
   m_ObjectHideFlags: 0

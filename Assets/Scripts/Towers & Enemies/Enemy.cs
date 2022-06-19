@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     public float amplitude = 0.7f;
     public float offset = 2.5f;
     private float randomPeriod;
-    public float worth = 50f;
+    public int worth = 50;
     public int spawnShipsOnDeath = 0; //maybe make it a global variable and change it in the wavespawner to raise difficulty?
     public bool hasArmor = false; //if yes only takes damage when hit by a cannon first
     private bool isDead = false;
@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
     {
         if (waypointIndex >= Waypoints.points.Length - 1)
         {
-            Destroy(gameObject);
+            EndPath();
             return;
         }
 
@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
 
     void EndPath()
     {
-        //PlayerStats.Lives--;
+        PlayerStats.Lives--;
         //WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
     }
@@ -119,12 +119,11 @@ public class Enemy : MonoBehaviour
             ufo.setNextWaypoint(waypointIndex);
         }
 
-        //PlayerStats.Money += worth;
+        PlayerStats.Money += worth;
 
         //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(effect, 5f);
 
-        //WaveSpawner.EnemiesAlive--;
 
         Destroy(gameObject);
     }

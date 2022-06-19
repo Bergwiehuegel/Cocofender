@@ -985,6 +985,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b8f46a173d6014699723c86e8a297c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &112363480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112363481}
+  - component: {fileID: 112363483}
+  - component: {fileID: 112363482}
+  - component: {fileID: 112363484}
+  m_Layer: 5
+  m_Name: Lives
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &112363481
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112363480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1932481259}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -349.6, y: -50}
+  m_SizeDelta: {x: 153.0303, y: 68.8302}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &112363482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112363480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6509804, g: 0.25490198, b: 0.2742612, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 80
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: LIVES
+--- !u!222 &112363483
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112363480}
+  m_CullTransparentMesh: 1
+--- !u!114 &112363484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112363480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02d3b01a8f7ad24ba79863d93d222ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livesText: {fileID: 112363482}
 --- !u!1001 &127521240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4624,6 +4717,8 @@ GameObject:
   - component: {fileID: 450005685}
   - component: {fileID: 450005684}
   - component: {fileID: 450005686}
+  - component: {fileID: 450005687}
+  - component: {fileID: 450005688}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -4676,6 +4771,32 @@ MonoBehaviour:
   ballistaTurretPrefab: {fileID: 2337453538071237809, guid: ef2b526113f032f4a873a2c521e4f01a, type: 3}
   cannonTurretPrefab: {fileID: 809892418431660607, guid: 30a9fc3a1ae8f584da81c9cd016da284, type: 3}
   blasterTurretPrefab: {fileID: 7384384083713456694, guid: 53b3262a05e228d4c9d301352c264395, type: 3}
+--- !u!114 &450005687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450005683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf0a68dba628a441bc1ae5fa26de97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 100
+  startLives: 10
+--- !u!114 &450005688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450005683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9c6e67db7dd884fb26a3a06b345616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &454227070
 GameObject:
   m_ObjectHideFlags: 0
@@ -6490,7 +6611,7 @@ PrefabInstance:
       objectReference: {fileID: 1482444287}
     - target: {fileID: 1731581791494738909, guid: bc94a46d4fc164b4780d7c32d8aaafc0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseBlaster
+      value: SelectBlaster
       objectReference: {fileID: 0}
     - target: {fileID: 1731581791494738911, guid: bc94a46d4fc164b4780d7c32d8aaafc0, type: 3}
       propertyPath: m_Pivot.x
@@ -13637,7 +13758,7 @@ PrefabInstance:
       objectReference: {fileID: 1482444287}
     - target: {fileID: 1731581791494738909, guid: bc94a46d4fc164b4780d7c32d8aaafc0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseCannon
+      value: SelectCannon
       objectReference: {fileID: 0}
     - target: {fileID: 1731581791494738911, guid: bc94a46d4fc164b4780d7c32d8aaafc0, type: 3}
       propertyPath: m_Pivot.x
@@ -14837,7 +14958,7 @@ RectTransform:
   - {fileID: 628957089}
   - {fileID: 1342849508}
   m_Father: {fileID: 1932481259}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -14920,6 +15041,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f6d7b2f18ba334f8619cb275c50411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  balliste:
+    prefab: {fileID: 2337453538071237809, guid: ef2b526113f032f4a873a2c521e4f01a, type: 3}
+    cost: 30
+  kanone:
+    prefab: {fileID: 809892418431660607, guid: 30a9fc3a1ae8f584da81c9cd016da284, type: 3}
+    cost: 100
+  blaster:
+    prefab: {fileID: 7384384083713456694, guid: 53b3262a05e228d4c9d301352c264395, type: 3}
+    cost: 50
 --- !u!1001 &1492414893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19835,6 +19965,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1070478969}
+  - {fileID: 112363481}
   - {fileID: 1482444283}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -22356,6 +22487,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1482444287}
+    - target: {fileID: 1731581791494738909, guid: bc94a46d4fc164b4780d7c32d8aaafc0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectBalliste
+      objectReference: {fileID: 0}
     - target: {fileID: 1731581791494738911, guid: bc94a46d4fc164b4780d7c32d8aaafc0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

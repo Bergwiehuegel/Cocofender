@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public TurretBlueprint balliste;
+    public TurretBlueprint kanone;
+    public TurretBlueprint blaster;
+
     BuildManager buildManager;
 
     // Start is called before the first frame update
@@ -10,21 +14,21 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void PurchaseBalliste()
+    public void SelectBalliste()
     {
         Debug.Log("Balliste ausgewählt");
-        buildManager.SetTurretToBuild(buildManager.ballistaTurretPrefab);
+        buildManager.SelectTurretToBuild(balliste);
     }
 
-    public void PurchaseCannon()
+    public void SelectCannon()
     {
         Debug.Log("Kanone ausgewählt");
-        buildManager.SetTurretToBuild(buildManager.cannonTurretPrefab);
+        buildManager.SelectTurretToBuild(kanone);
     }
 
-    public void PurchaseBlaster()
+    public void SelectBlaster()
     {
         Debug.Log("Blaster ausgewählt");
-        buildManager.SetTurretToBuild(buildManager.blasterTurretPrefab);
+        buildManager.SelectTurretToBuild(blaster);
     }
 }
