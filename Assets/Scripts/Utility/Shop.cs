@@ -8,6 +8,8 @@ public class Shop : MonoBehaviour
 
     BuildManager buildManager;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,19 +18,22 @@ public class Shop : MonoBehaviour
 
     public void SelectBalliste()
     {
-        Debug.Log("Balliste ausgewählt");
+        Debug.Log("Balliste ausgewï¿½hlt");
+        
         buildManager.SelectTurretToBuild(balliste);
     }
 
     public void SelectCannon()
     {
-        Debug.Log("Kanone ausgewählt");
+        Debug.Log("Kanone ausgewï¿½hlt");
+        
         buildManager.SelectTurretToBuild(kanone);
     }
 
     public void SelectBlaster()
     {
-        Debug.Log("Blaster ausgewählt");
+        Debug.Log("Blaster ausgewï¿½hlt");
+        
         buildManager.SelectTurretToBuild(blaster);
     }
 }

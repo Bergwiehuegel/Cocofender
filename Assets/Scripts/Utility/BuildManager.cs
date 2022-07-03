@@ -3,7 +3,9 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
-
+    [SerializeField] private AudioSource not_enough_mula;
+    [SerializeField] private AudioSource buy_sound;
+    [SerializeField] private AudioSource place_tower;
     void Awake()
     {
         if(instance != null)
@@ -27,6 +29,15 @@ public class BuildManager : MonoBehaviour
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        if(PlayerStats.Money < turretToBuild.cost)
+        {
+            not_enough_mula.Play();
+        }
+        else
+        {
+            buy_sound.Play();
+        }
+
     }
 
     public void UnselectTurretToBuild()
@@ -39,6 +50,7 @@ public class BuildManager : MonoBehaviour
         if(PlayerStats.Money < turretToBuild.cost)
         {
             Debug.Log("Not Enough Moneeeyyy!");
+            
             return;
         }
 
@@ -46,7 +58,7 @@ public class BuildManager : MonoBehaviour
 
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
-
+        place_tower.Play();
         Debug.Log("Turret built! Money left: " + PlayerStats.Money);
     }
 }

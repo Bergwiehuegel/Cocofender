@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-
+  
     private Transform targetWaypoint;
     private int waypointIndex = 0;
     private bool updateIndex = false;
+    
 
     [Header("Attributes")]
     public float startHealth = 100f;
@@ -24,11 +25,17 @@ public class Enemy : MonoBehaviour
     public bool hasArmor = false; //if yes only takes damage when hit by a cannon first
     private bool isDead = false;
 
+    [SerializeField] private AudioSource enemy_dies;
+    [SerializeField] private AudioSource player_damage;
+
     [Header("Unity Setup Fields")]
     public Canvas enemyCanvas;
     private Camera mainCamera;
     public Image healthBar;
     public GameObject ufoPrefab;
+
+    
+    
 
     void Start()
     {
@@ -86,6 +93,7 @@ public class Enemy : MonoBehaviour
         }
 
         PlayerStats.Lives--;
+        player_damage.Play();
         //WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
 
@@ -101,6 +109,7 @@ public class Enemy : MonoBehaviour
             if (health <= 0 && !isDead)
             {
                 Die();
+                enemy_dies.Play();
             }
         }
     }
@@ -118,7 +127,8 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         isDead = true;
-
+        
+        
         for (int i = 0; i < spawnShipsOnDeath; i++)
         {
             GameObject ufoObject = (GameObject)Instantiate(ufoPrefab, transform.position, transform.rotation);
