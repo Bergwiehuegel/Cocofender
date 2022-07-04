@@ -32,4 +32,14 @@ public class MainMenu : MonoBehaviour
     {
         levelToLoad = "Second_Level";
     }
+
+    public void LevelThree()
+    {
+        levelToLoad = "Third_Level";
+    }
+
+    public void LevelFour()
+    {
+        levelToLoad = "Fourth_Level";
+    }
 }
