@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public Text roundsText;
 
     public SceneFader sceneFader;
 
     void OnEnable()
     {
-        roundsText.text = "Test";
+        
     }
 
     public void Retry()

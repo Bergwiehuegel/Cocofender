@@ -22,4 +22,14 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Exiting...");
         Application.Quit();
     }
+
+    public void LevelOne()
+    {
+        levelToLoad = "First_Level";
+    }
+
+    public void LevelTwo()
+    {
+        levelToLoad = "Second_Level";
+    }
 }
