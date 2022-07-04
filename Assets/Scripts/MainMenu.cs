@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
 
-    public string levelToLoad = "First_Level";
+    public string levelToLoad = "First_Level_Easy";
 
     public SceneFader sceneFader;
 
@@ -25,21 +25,21 @@ public class MainMenu : MonoBehaviour
 
     public void LevelOne()
     {
-        levelToLoad = "First_Level";
+        levelToLoad = "First_Level_Easy";
     }
 
     public void LevelTwo()
     {
-        levelToLoad = "Second_Level";
+        levelToLoad = "First_Level_Hard";
     }
 
     public void LevelThree()
     {
-        levelToLoad = "Third_Level";
+        levelToLoad = "Second_Level_Easy";
     }
 
     public void LevelFour()
     {
-        levelToLoad = "Fourth_Level";
+        levelToLoad = "Second_Level_Hard";
     }
 }

@@ -4,7 +4,10 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public Transform enemyPrefab;
+    public Transform enemyDefaultPrefab;
+    public Transform enemySpeedyPrefab;
+    public Transform enemyMothershipPrefab;
+    public Transform enemyArmoredPrefab;
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 5f;
@@ -41,14 +44,47 @@ public class WaveSpawner : MonoBehaviour
     {
         waveIndex++;
         for (int i = 0; i < waveIndex * waveIndex; i++) {
-            SpawnEnemy();
+            if (waveIndex % 2 == 1 && i % 5 == 4)
+            {
+                SpawnSpeedyEnemy();
+            }
+            else if (waveIndex % 5 == 1 && i % 5 == 4)
+            {
+                SpawnArmoredEnemy();
+            }
+            else if (waveIndex % 11 == 1 && i % 5 == 4)
+            {
+                SpawnMothershipEnemy();
+            }
+            else
+            {
+                SpawnDefaultEnemy();
+            }
+
+
             yield return new WaitForSeconds(0.3f);
         }
+
         //Debug.Log("Wave " + waveIndex + " Incoming!");
     }
-    void SpawnEnemy()
+    void SpawnDefaultEnemy()
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(enemyDefaultPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    void SpawnSpeedyEnemy()
+    {
+        Instantiate(enemySpeedyPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    void SpawnArmoredEnemy()
+    {
+        Instantiate(enemyArmoredPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+
+    void SpawnMothershipEnemy()
+    {
+        Instantiate(enemyMothershipPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 
 }

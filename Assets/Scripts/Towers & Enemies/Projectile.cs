@@ -83,6 +83,10 @@ public class Projectile : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, damageRadius);
         foreach (Collider collider in colliders)
         {
+            if (collider == null)
+            {
+                continue;
+            }
             if (collider.tag == "Enemy")
             {
                 Damage(collider.gameObject);
@@ -92,10 +96,9 @@ public class Projectile : MonoBehaviour
 
     protected void Damage(GameObject enemy) //calls the damage function from enemy, also applies slow and destroyes armor if fitting
     {
-        Enemy enemyScript = enemy.GetComponent<Enemy>();
-
         if (enemy != null)
         {
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
             if (slowPercent > 0f)
             {
                 enemyScript.Slow(slowPercent);

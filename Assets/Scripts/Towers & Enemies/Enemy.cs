@@ -138,13 +138,7 @@ public class Enemy : MonoBehaviour
             Enemy ufo = ufoObject.GetComponent<Enemy>();
             ufo.setNextWaypoint(waypointIndex);
         }
-        hilfsvariable = PlayerStats.Money;
         PlayerStats.Money += worth;
-        if(hilfsvariable < PlayerStats.Money)
-        {
-            enemy_dies.Play();
-        }
-        
 
         //WaveSpawner.EnemiesAlive--;
         //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
