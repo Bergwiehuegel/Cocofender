@@ -25,14 +25,15 @@ public class Enemy : MonoBehaviour
     public bool hasArmor = false; //if yes only takes damage when hit by a cannon first
     private bool isDead = false;
 
-    [SerializeField] private AudioSource enemy_dies;
-    [SerializeField] private AudioSource player_damage;
+    [SerializeField] public AudioSource enemy_dies;
+    [SerializeField] public AudioSource player_damage;
 
     [Header("Unity Setup Fields")]
     public Canvas enemyCanvas;
     private Camera mainCamera;
     public Image healthBar;
     public GameObject ufoPrefab;
+    int hilfsvariable;
 
     
     
@@ -93,7 +94,7 @@ public class Enemy : MonoBehaviour
         }
 
         PlayerStats.Lives--;
-        player_damage.Play();
+        
         //WaveSpawner.EnemiesAlive--;
         Destroy(gameObject);
 
@@ -108,8 +109,9 @@ public class Enemy : MonoBehaviour
 
             if (health <= 0 && !isDead)
             {
+                
                 Die();
-                enemy_dies.Play();
+                
             }
         }
     }
@@ -129,14 +131,20 @@ public class Enemy : MonoBehaviour
         isDead = true;
         
         
+        
         for (int i = 0; i < spawnShipsOnDeath; i++)
         {
             GameObject ufoObject = (GameObject)Instantiate(ufoPrefab, transform.position, transform.rotation);
             Enemy ufo = ufoObject.GetComponent<Enemy>();
             ufo.setNextWaypoint(waypointIndex);
         }
-
+        hilfsvariable = PlayerStats.Money;
         PlayerStats.Money += worth;
+        if(hilfsvariable < PlayerStats.Money)
+        {
+            enemy_dies.Play();
+        }
+        
 
         //WaveSpawner.EnemiesAlive--;
         //GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);

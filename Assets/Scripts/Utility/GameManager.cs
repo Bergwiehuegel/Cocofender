@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static bool GameIsOver = false;
+    
 
     public GameObject gameOverUI;
     // Update is called once per frame
